@@ -35,7 +35,9 @@ export default class InputAdapter extends React.PureComponent {
         if (isDocument && this.input === document.activeElement) {
             if (isAndroid === true) {
                 setTimeout(() => {
-                    this.input.setSelectionRange(this.props.caretPosition, this.props.caretPosition, 'none');
+                    if (this.input) {
+                        this.input.setSelectionRange(this.props.caretPosition, this.props.caretPosition, 'none');
+                    }
                 }, 0);
             } else {
                 this.input.setSelectionRange(this.props.caretPosition, this.props.caretPosition, 'none');
