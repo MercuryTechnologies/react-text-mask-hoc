@@ -805,7 +805,11 @@ class InputAdapter extends React.PureComponent {
   }
 
   get caretPosition() {
-    return this.input.selectionEnd;
+    if (this.input && typeof this.input.selectionEnd === 'number') {
+      return this.input.selectionEnd;
+    }
+
+    return 0;
   }
 
   _getRef(ref) {
